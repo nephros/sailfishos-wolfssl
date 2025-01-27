@@ -1,0 +1,166 @@
+Name: wolfssl
+Summary: A small, fast, portable implementation of TLS/SSL for embedded devices
+Version: 5.7.6
+Release: 0
+Group: Development/Libraries
+License: GPLv2
+URL: https://www.wolfssl.com
+SCM: https://github.com/wolfSSL/wolfssl
+Sources:
+    - '%{name}-%{version}.zip'
+#Patches:
+#  - 'baz'
+Description: |
+    The wolfSSL embedded SSL library (formerly CyaSSL) is a lightweight SSL/TLS
+    library written in ANSI C and targeted for embedded, RTOS, and
+    resource-constrained environments - primarily because of its small size,
+    speed, and feature set.
+
+    It is commonly used in standard operating environments as well because of
+    its royalty-free pricing and excellent cross platform support. wolfSSL
+    supports industry standards up to the current TLS 1.3 and DTLS 1.3, is up
+    to 20 times smaller than OpenSSL, and offers progressive ciphers such as
+    ChaCha20, Curve25519, Blake2b and Post-Quantum TLS 1.3 groups.
+
+    User benchmarking and feedback reports dramatically better performance when
+    using wolfSSL over OpenSSL.
+
+    %if "%{?vendor}" == "chum"
+    Title: wolfSSL
+    DeveloperName: wolfSSL Inc.
+    PackagedBy: nephros
+    Categories:
+     - Library
+    Custom:
+      Repo: https://github.com/wolfSSL/wolfssl
+      PackagingRepo: https://github.com/nephros/sailfishos-wolfssl
+    Links:
+      Homepage: %{url}
+    %endif
+
+SetupOptions: -q -n %{name}-%{version}/wolfssl
+Macros:
+  - 'pkgconfigdir;%{_libdir}/pkgconfig'
+  - 'sover;43'
+  - 'lname;lib%{name}'
+#Macros2:
+PkgBR:
+  - autoconf
+  - automake
+  - gcc
+  - glibc-devel
+  - glibc-headers
+  - openssl
+  - pkgconfig
+  - sed
+PkgConfigBR:
+  - openssl
+  - zlib
+Configure: reconfigure
+ConfigOptions:
+  # 'aarch64:CFLAGS="${CFLAGS} -march=armv8-a+crypto"'
+  - 'arm:--with-arm-target=cortex'
+  - 'aarch64:--with-arm-target=cortex'
+  - '--enable-fastmath'
+  - '--enable-sp'
+  # '--enable-sp-math-all'
+  - '--enable-sp-math'
+  - 'arm:--enable-sp-asm'
+  - 'aarch64:--enable-sp-asm'
+  # 'arm:--enable-32bit'
+  # 'aarch64:--enable-64bit'
+  # 'ix86:--enable-32bit'
+  - 'ix86:--enable-aesni'
+  # 'ix86:--enable-intelasm' // amd64 only
+  - 'arm:--enable-armasm'
+  # 'aarch64:--enable-armasm' #  Error: selected processor does not support...
+  - '--enable-harden'
+  # '--enable-harden-tls=112'
+  - '--with-libz'
+  # '--enable-afalg' # conflict w/ sha224
+  # '--enable-asynccrypt'
+  # '--enable-asynccrypt-sw'
+  # '--enable-opensslcoexist'
+  # '--enable-opensslextra'
+  # '--enable-opensslall'
+  # '--enable-pkcallbacks'
+  # '--enable-psk'
+  - '--disable-benchmark'
+  - '--disable-crypttests'
+  - '--disable-makeclean'
+  - '--disable-examples'
+  # '--disable-sha512'
+  # '--disable-sha384'
+  - '--enable-supportedcurves'
+  # '--enable-ecccustcurves'
+  - '--enable-ech'
+  # '--enable-curve25519'
+  - '--enable-ed25519'
+  # '--enable-ed25519-stream'
+  # '--enable-curve448'
+  # '--enable-ed448'
+  # '--enable-ed448-stream'
+  # '--with-eccminsz=192' # default 224
+  # '--enable-camellia'
+  # '--enable-cmac'
+  # '--enable-aescbc'
+  # '--enable-aesgcm'
+  # '--enable-aesgcm-stream'
+  # '--enable-aesctr'
+  # '--enable-aesxts'
+  # '--enable-aesxts-stream'
+  - '--enable-pkcs7'
+  # '--enable-pkcs8'
+  # '--enable-pkcs11'
+  # '--enable-certservice'
+  # '--enable-keygen'
+  # '--enable-acert'
+  # '--enable-certgen'
+  # '--enable-certreq'
+  # '--enable-certext'
+  # '--enable-certgencache'
+  # '--enable-trustedca'
+  - '--enable-sys-ca-certs'
+  # '--enable-sni'
+  - '--disable-crl'
+  # '--enable-crl'
+  - '--disable-ocsp'
+  # '--enable-ocsp'
+  # '--enable-ocspstapling=yes'
+  - '--enable-session-ticket'
+  # for python:
+  # '--enable-dtls'
+  # '--enable-dtls13'
+  # '--enable-dtls-mtu'
+  # Privoxy needs these:
+  - '--enable-filesystem'
+  - '--enable-altcertchains'
+  - '--enable-renegotiation-indication'
+  - '--enable-ip-alt-name'
+  - '--enable-lighty' # for ALTNAMES
+  # Privoxy with ecc uses these:
+  - '--with-eccminsz=0' # default 224, NEEDED to be 0 for privoxy for now
+  - '--enable-sha224'
+  - '--enable-keygen'
+  # '--enable-acert'
+  - '--enable-certgen'
+Files:
+  - '%{_libdir}/%{lname}.so.%{sover}*'
+
+SubPackages:
+    - Name:  devel
+      Summary: Header files and library symbolic links for %{name}
+      Group: Development
+      Files:
+        - '%license COPYING'
+        - '%{_libdir}/%{lname}.so'
+        - '%{_includedir}/%{name}/'
+        - '%{pkgconfigdir}/*pc'
+        - '%{_bindir}/%{name}-config'
+
+
+RpmLintIgnore:
+  - 'description-line-too-long'
+  - 'summary-too-long'
+  - 'no-changelogname-tag'
+  - 'invalid-url'

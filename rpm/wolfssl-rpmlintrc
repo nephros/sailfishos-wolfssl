@@ -1,0 +1,5 @@
+from Config import *
+addFilter("description-line-too-long")
+addFilter("summary-too-long")
+addFilter("no-changelogname-tag")
+addFilter("invalid-url")
