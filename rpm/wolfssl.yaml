@@ -7,7 +7,8 @@ License: GPLv2
 URL: https://www.wolfssl.com
 SCM: https://github.com/wolfSSL/wolfssl
 Sources:
-    - '%{name}-%{version}.zip'
+    - '%{name}-%{version}.tar.xz'
+    # '%{name}-%{version}.zip'
 #Patches:
 #  - 'baz'
 Description: |

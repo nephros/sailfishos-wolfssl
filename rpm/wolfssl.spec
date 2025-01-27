@@ -17,7 +17,7 @@ Release:    0
 Group:      Development/Libraries
 License:    GPLv2
 URL:        https://www.wolfssl.com
-Source0:    %{name}-%{version}.zip
+Source0:    %{name}-%{version}.tar.xz
 Source100:  wolfssl.yaml
 Source101:  wolfssl-rpmlintrc
 Requires(post): /sbin/ldconfig
