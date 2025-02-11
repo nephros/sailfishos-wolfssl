@@ -70,6 +70,13 @@ Obsoletes:  %{name} <= 5.7.6+git1
 %description libs
 %{summary}.
 
+%package examples
+Summary:    Example binaries for %{name}
+Group:      Applications
+
+%description examples
+%{summary}.
+
 %package devel
 Summary:    Header files and library symbolic links for %{name}
 Group:      Development
@@ -115,7 +122,7 @@ Requires:   %{name}-libs = %{version}-%{release}
     --disable-benchmark \
     --disable-crypttests \
     --disable-makeclean \
-    --disable-examples \
+    --enable-examples \
     --enable-supportedcurves \
     --enable-ech \
     --enable-ed25519 \
@@ -159,6 +166,12 @@ rm -rf %{buildroot}%{_docdir}
 %{_libdir}/%{lname}.so.%{sover}*
 # >> files libs
 # << files libs
+
+%files examples
+%defattr(-,root,root,-)
+%{_docdir}/%{name}/examples
+# >> files examples
+# << files examples
 
 %files devel
 %defattr(-,root,root,-)
