@@ -153,7 +153,7 @@ SubPackages:
       Summary: Example binaries for %{name}
       Group: Applications
       Files:
-        - '%{_docdir}/%{name}/examples'
+        - '%{_bindir}/%{name}/'
     - Name:  devel
       Summary: Header files and library symbolic links for %{name}
       Group: Development

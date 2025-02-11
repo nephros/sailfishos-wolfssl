@@ -147,6 +147,14 @@ rm -rf %{buildroot}
 
 # >> install post
 rm -rf %{buildroot}%{_docdir}
+pushd examples
+for f in asn1 async benchmark client configs crypto_policies echoclient echoserver pem sctp server
+do
+if [ -e $f/$f ]; then
+install -Dm755 $f/$f %{buildroot}%{_bindir}/%{name}/$f
+fi
+done
+popd
 # << install post
 
 %post -p /sbin/ldconfig
@@ -161,6 +169,7 @@ rm -rf %{buildroot}%{_docdir}
 
 %files examples
 %defattr(-,root,root,-)
+%{_bindir}/%{name}/
 # >> files examples
 # << files examples
 
