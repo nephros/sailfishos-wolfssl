@@ -155,7 +155,10 @@ SubPackages:
       Group: Applications
       Prefix: /opt
       Files:
+        - '%dir %{_examples_bindir}/'
         - '%{_examples_bindir}/'
+        - '%dir %{_examples_bindir}/certs'
+        - '%{_examples_bindir}/certs/'
     - Name:  devel
       Summary: Header files and library symbolic links for %{name}
       Group: Development
