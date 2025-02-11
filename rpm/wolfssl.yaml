@@ -89,7 +89,7 @@ ConfigOptions:
   - '--disable-benchmark'
   - '--disable-crypttests'
   - '--disable-makeclean'
-  - '--disable-examples'
+  - '--enable-examples'
   # '--disable-sha512'
   # '--disable-sha384'
   - '--enable-supportedcurves'
@@ -149,6 +149,11 @@ Files:
   - '%{_libdir}/%{lname}.so.%{sover}*'
 
 SubPackages:
+    - Name:  examples
+      Summary: Example binaries for %{name}
+      Group: Applications
+      Files:
+        - '%{_docdir}/%{name}/examples'
     - Name:  devel
       Summary: Header files and library symbolic links for %{name}
       Group: Development

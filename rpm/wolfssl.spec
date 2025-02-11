@@ -62,6 +62,14 @@ Links:
 %endif
 
 
+%package examples
+Summary:    Example binaries for %{name}
+Group:      Applications
+Requires:   %{name} = %{version}-%{release}
+
+%description examples
+%{summary}.
+
 %package devel
 Summary:    Header files and library symbolic links for %{name}
 Group:      Development
@@ -107,7 +115,7 @@ Requires:   %{name} = %{version}-%{release}
     --disable-benchmark \
     --disable-crypttests \
     --disable-makeclean \
-    --disable-examples \
+    --enable-examples \
     --enable-supportedcurves \
     --enable-ech \
     --enable-ed25519 \
@@ -138,7 +146,11 @@ rm -rf %{buildroot}
 %make_install
 
 # >> install post
-rm -rf %{buildroot}%{_docdir}
+# don't package docs, but leave the examples dir
+rm -f %{buildroot}%{_docdir}/%{name}/taoCert.txt
+rm -f %{buildroot}%{_docdir}/%{name}/README.txt
+rm -f %{buildroot}%{_docdir}/%{name}/QUIC.md
+rm -f %{buildroot}%{_docdir}/%{name}/example/*.c
 # << install post
 
 %post -p /sbin/ldconfig
@@ -150,6 +162,11 @@ rm -rf %{buildroot}%{_docdir}
 %{_libdir}/%{lname}.so.%{sover}*
 # >> files
 # << files
+
+%files examples
+%defattr(-,root,root,-)
+# >> files examples
+# << files examples
 
 %files devel
 %defattr(-,root,root,-)
