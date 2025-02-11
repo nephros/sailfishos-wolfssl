@@ -164,6 +164,14 @@ libtool --mode=install install -Dm755 $f/$f %{buildroot}%{_examples_bindir}/$f
 fi
 done
 popd
+pushd certs
+for cert in *.pem *.der ed25519/*.pem ed25519/*.der ed448/*.pem ed448/*.der crl/*pem crl/*der
+do
+if [ -f $cert]; then
+install -Dm644 $cert %{buildroot}%{_examples_bindir}/certs/$cert
+fi
+done
+popd
 # << install post
 
 %post libs -p /sbin/ldconfig
@@ -179,9 +187,10 @@ popd
 
 %files examples
 %defattr(-,root,root,-)
-%{_docdir}/%{name}/examples
-%{_bindir}/%{name}/
+%dir %{_examples_bindir}/
 %{_examples_bindir}/
+%dir %{_examples_bindir}/certs
+%{_examples_bindir}/certs/
 # >> files examples
 # << files examples
 
