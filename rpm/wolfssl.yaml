@@ -44,6 +44,7 @@ Macros:
   - 'pkgconfigdir;%{_libdir}/pkgconfig'
   - 'sover;43'
   - 'lname;lib%{name}'
+  - '_examples_bindir;/opt/examples/%{name}/'
 #Macros2:
 PkgBR:
   - autoconf
@@ -152,8 +153,9 @@ SubPackages:
     - Name:  examples
       Summary: Example binaries for %{name}
       Group: Applications
+      Prefix: /opt
       Files:
-        - '%{_bindir}/%{name}/'
+        - '%{_examples_bindir}/'
     - Name:  devel
       Summary: Header files and library symbolic links for %{name}
       Group: Development
