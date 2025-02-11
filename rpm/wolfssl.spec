@@ -10,6 +10,7 @@ Name:       wolfssl
 %define pkgconfigdir %{_libdir}/pkgconfig
 %define sover 43
 %define lname lib%{name}
+%define _examples_bindir /opt/examples/%{name}/
 
 Summary:    A small, fast, portable implementation of TLS/SSL for embedded devices
 Version:    5.7.6
@@ -73,6 +74,7 @@ Obsoletes:  %{name} <= 5.7.6+git1
 %package examples
 Summary:    Example binaries for %{name}
 Group:      Applications
+Prefix:     /opt
 
 %description examples
 %{summary}.
@@ -158,7 +160,7 @@ pushd examples
 for f in asn1 async benchmark client configs crypto_policies echoclient echoserver pem sctp server
 do
 if [ -e $f/$f ]; then
-install -Dm755 $f/$f %{buildroot}%{_bindir}/%{name}/$f
+libtool --mode=install install -Dm755 $f/$f %{buildroot}%{_examples_bindir}/$f
 fi
 done
 popd
@@ -179,6 +181,7 @@ popd
 %defattr(-,root,root,-)
 %{_docdir}/%{name}/examples
 %{_bindir}/%{name}/
+%{_examples_bindir}/
 # >> files examples
 # << files examples
 
