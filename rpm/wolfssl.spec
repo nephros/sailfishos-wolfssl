@@ -146,11 +146,7 @@ rm -rf %{buildroot}
 %make_install
 
 # >> install post
-# don't package docs, but leave the examples dir
-rm -f %{buildroot}%{_docdir}/%{name}/taoCert.txt
-rm -f %{buildroot}%{_docdir}/%{name}/README.txt
-rm -f %{buildroot}%{_docdir}/%{name}/QUIC.md
-rm -f %{buildroot}%{_docdir}/%{name}/example/*.c
+rm -rf %{buildroot}%{_docdir}
 # << install post
 
 %post -p /sbin/ldconfig
