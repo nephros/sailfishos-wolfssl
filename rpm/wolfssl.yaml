@@ -146,6 +146,8 @@ ConfigOptions:
   # '--enable-acert'
   - '--enable-certgen'
 
+NoFiles: true
+
 SubPackages:
     - Name:  libs
       Summary: The %{name} library

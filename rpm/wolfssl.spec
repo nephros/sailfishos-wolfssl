@@ -153,10 +153,6 @@ rm -rf %{buildroot}%{_docdir}
 
 %postun libs -p /sbin/ldconfig
 
-%files
-%defattr(-,root,root,-)
-# >> files
-# << files
 
 %files libs
 %defattr(-,root,root,-)
