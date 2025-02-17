@@ -20,8 +20,6 @@ URL:        https://www.wolfssl.com
 Source0:    %{name}-%{version}.tar.xz
 Source100:  wolfssl.yaml
 Source101:  wolfssl-rpmlintrc
-Requires(post): /sbin/ldconfig
-Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  autoconf
@@ -62,10 +60,20 @@ Links:
 %endif
 
 
+%package libs
+Summary:    The %{name} library
+Group:      Libraries
+Requires(post): /sbin/ldconfig
+Requires(postun): /sbin/ldconfig
+Obsoletes:  %{name} <= 5.7.6+git1
+
+%description libs
+%{summary}.
+
 %package devel
 Summary:    Header files and library symbolic links for %{name}
 Group:      Development
-Requires:   %{name} = %{version}-%{release}
+Requires:   %{name}-libs = %{version}-%{release}
 
 %description devel
 %{summary}.
@@ -141,15 +149,20 @@ rm -rf %{buildroot}
 rm -rf %{buildroot}%{_docdir}
 # << install post
 
-%post -p /sbin/ldconfig
+%post libs -p /sbin/ldconfig
 
-%postun -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root,-)
-%{_libdir}/%{lname}.so.%{sover}*
 # >> files
 # << files
+
+%files libs
+%defattr(-,root,root,-)
+%{_libdir}/%{lname}.so.%{sover}*
+# >> files libs
+# << files libs
 
 %files devel
 %defattr(-,root,root,-)

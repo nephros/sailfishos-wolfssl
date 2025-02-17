@@ -145,13 +145,23 @@ ConfigOptions:
   - '--enable-keygen'
   # '--enable-acert'
   - '--enable-certgen'
-Files:
-  - '%{_libdir}/%{lname}.so.%{sover}*'
 
 SubPackages:
+    - Name:  libs
+      Summary: The %{name} library
+      Group: Libraries
+      AutoDepend: false
+      Obsoletes:
+        # original packaging had the libs in the main package:
+        - '%{name} <= 5.7.6+git1'
+      Files:
+         - '%{_libdir}/%{lname}.so.%{sover}*'
     - Name:  devel
       Summary: Header files and library symbolic links for %{name}
       Group: Development
+      AutoDepend: false
+      Requires:
+        - '%{name}-libs = %{version}-%{release}'
       Files:
         - '%license COPYING'
         - '%{_libdir}/%{lname}.so'
