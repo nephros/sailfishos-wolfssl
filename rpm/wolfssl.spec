@@ -132,7 +132,9 @@ Requires:   %{name}-libs = %{version}-%{release}
     --with-eccminsz=0 \
     --enable-sha224 \
     --enable-keygen \
-    --enable-certgen
+    --enable-certgen \
+    --enable-debug-trace-errcodes \
+    CFLAGS="${CFLAGS} -DWOLFSSL_DEBUG_TLS"
 
 %make_build
 

@@ -145,6 +145,9 @@ ConfigOptions:
   - '--enable-keygen'
   # '--enable-acert'
   - '--enable-certgen'
+  # debug:
+  - '--enable-debug-trace-errcodes'
+  - 'CFLAGS="${CFLAGS} -DWOLFSSL_DEBUG_TLS"'
 
 NoFiles: true
 
