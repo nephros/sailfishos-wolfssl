@@ -133,6 +133,7 @@ Requires:   %{name}-libs = %{version}-%{release}
     --enable-sha224 \
     --enable-keygen \
     --enable-certgen \
+    --enable-certext \
     --enable-debug-trace-errcodes \
     CFLAGS="${CFLAGS} -DWOLFSSL_DEBUG_TLS"
 

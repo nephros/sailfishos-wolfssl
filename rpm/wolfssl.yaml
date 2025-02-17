@@ -118,7 +118,6 @@ ConfigOptions:
   # '--enable-acert'
   # '--enable-certgen'
   # '--enable-certreq'
-  # '--enable-certext'
   # '--enable-certgencache'
   # '--enable-trustedca'
   - '--enable-sys-ca-certs'
@@ -145,6 +144,7 @@ ConfigOptions:
   - '--enable-keygen'
   # '--enable-acert'
   - '--enable-certgen'
+  - '--enable-certext'
   # debug:
   - '--enable-debug-trace-errcodes'
   - 'CFLAGS="${CFLAGS} -DWOLFSSL_DEBUG_TLS"'
