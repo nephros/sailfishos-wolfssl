@@ -145,6 +145,7 @@ ConfigOptions:
   - '--enable-certgen'
   # debug:
   # Some sites (doc.qt.io) throw error 313, try to fix that:
+  - '--enable-dual-alg-certs'
   - '--enable-crl'
   - '--enable-ocsp'
   - '--enable-ocspstapling=yes'
