@@ -121,7 +121,6 @@ ConfigOptions:
   # '--enable-certgencache'
   # '--enable-trustedca'
   - '--enable-sys-ca-certs'
-  # '--enable-sni'
   - '--disable-crl'
   # '--enable-crl'
   - '--disable-ocsp'
@@ -144,10 +143,19 @@ ConfigOptions:
   - '--enable-keygen'
   # '--enable-acert'
   - '--enable-certgen'
-  - '--enable-certext'
   # debug:
+  # Some sites (doc.qt.io) throw error 313, try to fix that:
+  - '--enable-crl'
+  - '--enable-ocsp'
+  - '--enable-ocspstapling=yes'
+  - '--enable-psk'
+  - '--enable-sni'
+  - '--enable-certext'
   - '--enable-debug-trace-errcodes'
   - 'CFLAGS="${CFLAGS} -DWOLFSSL_DEBUG_TLS"'
+  # https://www.wolfssl.com/forums/topic839-solved-err-313-revcd-alert-fatal-error.html
+  - 'CFLAGS="${CFLAGS} -DWOLFSSL_STATIC_RSA"'
+
 
 NoFiles: true
 

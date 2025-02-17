@@ -133,9 +133,15 @@ Requires:   %{name}-libs = %{version}-%{release}
     --enable-sha224 \
     --enable-keygen \
     --enable-certgen \
+    --enable-crl \
+    --enable-ocsp \
+    --enable-ocspstapling=yes \
+    --enable-psk \
+    --enable-sni \
     --enable-certext \
     --enable-debug-trace-errcodes \
-    CFLAGS="${CFLAGS} -DWOLFSSL_DEBUG_TLS"
+    CFLAGS="${CFLAGS} -DWOLFSSL_DEBUG_TLS" \
+    CFLAGS="${CFLAGS} -DWOLFSSL_STATIC_RSA"
 
 %make_build
 
