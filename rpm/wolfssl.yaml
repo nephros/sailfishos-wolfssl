@@ -145,7 +145,7 @@ ConfigOptions:
   - '--enable-sha224'
   - '--enable-keygen'
   # '--enable-acert'
-  - '--enable-certgen'
+  # '--enable-certgen'
   - '--disable-dual-alg-certs' # needs experimental
 Files:
   - '%{_libdir}/%{lname}.so.%{sover}*'
