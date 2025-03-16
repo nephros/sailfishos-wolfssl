@@ -128,7 +128,8 @@ ConfigOptions:
   # '--enable-crl'
   # '--disable-ocsp'
   # '--enable-ocsp'
-  - '--enable-ocspstapling=yes'
+  # '--enable-ocspstapling=yes'
+  - '--enable-ocspstapling=no-multi'
   - '--enable-session-ticket'
   # for python:
   # '--enable-dtls'
@@ -146,7 +147,6 @@ ConfigOptions:
   - '--enable-keygen'
   # '--enable-acert'
   - '--enable-certgen'
-  - '--disable-dual-alg-certs' # needs experimental
 Files:
   - '%{_libdir}/%{lname}.so.%{sover}*'
 

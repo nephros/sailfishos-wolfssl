@@ -124,7 +124,7 @@ Requires:   %{name} = %{version}-%{release}
     --enable-pkcs7 \
     --enable-sys-ca-certs \
     --disable-crl \
-    --enable-ocspstapling=yes \
+    --enable-ocspstapling=no-multi \
     --enable-session-ticket \
     --enable-filesystem \
     --enable-altcertchains \
@@ -134,8 +134,7 @@ Requires:   %{name} = %{version}-%{release}
     --with-eccminsz=0 \
     --enable-sha224 \
     --enable-keygen \
-    --enable-certgen \
-    --disable-dual-alg-certs
+    --enable-certgen
 
 %make_build
 
