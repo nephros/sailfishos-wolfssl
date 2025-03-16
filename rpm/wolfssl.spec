@@ -134,6 +134,7 @@ Requires:   %{name} = %{version}-%{release}
     --with-eccminsz=0 \
     --enable-sha224 \
     --enable-keygen \
+    --enable-certgen \
     --disable-dual-alg-certs
 
 %make_build
