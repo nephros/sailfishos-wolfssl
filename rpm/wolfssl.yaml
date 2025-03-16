@@ -126,9 +126,9 @@ ConfigOptions:
   # '--enable-sni'
   - '--disable-crl'
   # '--enable-crl'
-  - '--disable-ocsp'
-  # '--enable-ocsp'
-  # '--enable-ocspstapling=yes'
+  # '--disable-ocsp'
+  - '--enable-ocsp'
+  - '--enable-ocspstapling=yes'
   - '--enable-session-ticket'
   # for python:
   # '--enable-dtls'
