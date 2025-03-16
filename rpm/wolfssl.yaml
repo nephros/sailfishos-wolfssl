@@ -127,7 +127,7 @@ ConfigOptions:
   - '--disable-crl'
   # '--enable-crl'
   # '--disable-ocsp'
-  - '--enable-ocsp'
+  # '--enable-ocsp'
   - '--enable-ocspstapling=yes'
   - '--enable-session-ticket'
   # for python:

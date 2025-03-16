@@ -124,7 +124,6 @@ Requires:   %{name} = %{version}-%{release}
     --enable-pkcs7 \
     --enable-sys-ca-certs \
     --disable-crl \
-    --enable-ocsp \
     --enable-ocspstapling=yes \
     --enable-session-ticket \
     --enable-filesystem \
