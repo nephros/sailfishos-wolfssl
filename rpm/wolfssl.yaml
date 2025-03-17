@@ -127,8 +127,6 @@ ConfigOptions:
   - '--enable-ocsp'
   - '--enable-ocspstapling=yes'
   - '--enable-session-ticket'
-  - '--enable-secure-renegotiation'
-  - '--enable-secure-renegotiation-info'
   # for python:
   # '--enable-dtls'
   # '--enable-dtls13'
@@ -136,7 +134,9 @@ ConfigOptions:
   # Privoxy needs these:
   - '--enable-filesystem'
   - '--enable-altcertchains'
-  - '--enable-renegotiation-indication'
+  # '--enable-renegotiation-indication' # either this or --enable-secure-renegotiation
+  - '--enable-secure-renegotiation' # can't have this and --enable-renegotiation-indication
+  - '--enable-secure-renegotiation-info'
   - '--enable-ip-alt-name'
   - '--enable-lighty' # for ALTNAMES
   # Privoxy with ecc uses these:

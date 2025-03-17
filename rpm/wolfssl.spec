@@ -125,11 +125,10 @@ Requires:   %{name}-libs = %{version}-%{release}
     --enable-ocsp \
     --enable-ocspstapling=yes \
     --enable-session-ticket \
-    --enable-secure-renegotiation \
-    --enable-secure-renegotiation-info \
     --enable-filesystem \
     --enable-altcertchains \
-    --enable-renegotiation-indication \
+    --enable-secure-renegotiation \
+    --enable-secure-renegotiation-info \
     --enable-ip-alt-name \
     --enable-lighty \
     --with-eccminsz=0 \
