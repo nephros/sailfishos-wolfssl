@@ -133,7 +133,6 @@ Requires:   %{name}-libs = %{version}-%{release}
     --enable-sha224 \
     --enable-keygen \
     --enable-certgen \
-    --enable-dual-alg-certs \
     --enable-crl \
     --enable-ocsp \
     --enable-ocspstapling=yes \
