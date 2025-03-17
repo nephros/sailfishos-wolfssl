@@ -137,6 +137,7 @@ ConfigOptions:
   # '--enable-renegotiation-indication' # either this or --enable-secure-renegotiation
   - '--enable-secure-renegotiation' # can't have this and --enable-renegotiation-indication
   - '--enable-secure-renegotiation-info'
+  - '--enable-fallback-scsv'
   - '--enable-ip-alt-name'
   - '--enable-lighty' # for ALTNAMES
   # Privoxy with ecc uses these:
