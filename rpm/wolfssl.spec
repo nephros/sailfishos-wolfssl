@@ -126,7 +126,9 @@ Requires:   %{name}-libs = %{version}-%{release}
     --enable-session-ticket \
     --enable-filesystem \
     --enable-altcertchains \
-    --enable-renegotiation-indication \
+    --enable-secure-renegotiation \
+    --enable-secure-renegotiation-info \
+    --enable-fallback-scsv \
     --enable-ip-alt-name \
     --enable-lighty \
     --with-eccminsz=0 \
