@@ -122,8 +122,11 @@ Requires:   %{name}-libs = %{version}-%{release}
     --enable-pkcs7 \
     --enable-sys-ca-certs \
     --disable-crl \
-    --disable-ocsp \
+    --enable-ocsp \
+    --enable-ocspstapling=yes \
     --enable-session-ticket \
+    --enable-secure-renegotiation \
+    --enable-secure-renegotiation-info \
     --enable-filesystem \
     --enable-altcertchains \
     --enable-renegotiation-indication \
