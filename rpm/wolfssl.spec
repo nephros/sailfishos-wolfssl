@@ -12,7 +12,7 @@ Name:       wolfssl
 %define lname lib%{name}
 
 Summary:    A small, fast, portable implementation of TLS/SSL for embedded devices
-Version:    5.8.0
+Version:    5.8.2
 Release:    0
 Group:      Development/Libraries
 License:    GPLv2
@@ -151,7 +151,6 @@ Requires:   %{name}-libs = %{version}-%{release}
 # << build post
 
 %install
-rm -rf %{buildroot}
 # >> install pre
 # << install pre
 %make_install
@@ -166,13 +165,11 @@ rm -rf %{buildroot}%{_docdir}
 
 
 %files libs
-%defattr(-,root,root,-)
 %{_libdir}/%{lname}.so.%{sover}*
 # >> files libs
 # << files libs
 
 %files devel
-%defattr(-,root,root,-)
 %license COPYING
 %{_libdir}/%{lname}.so
 %{_includedir}/%{name}/
