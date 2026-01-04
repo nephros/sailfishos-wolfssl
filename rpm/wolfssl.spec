@@ -12,7 +12,7 @@ Name:       wolfssl
 %define lname lib%{name}
 
 Summary:    A small, fast, portable implementation of TLS/SSL for embedded devices
-Version:    5.8.2
+Version:    5.8.4
 Release:    0
 Group:      Development/Libraries
 License:    GPLv2
