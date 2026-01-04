@@ -159,7 +159,7 @@ ConfigOptions:
   # 'CFLAGS="${CFLAGS} -DWOLFSSL_DEBUG_TLS"'
   # https://www.wolfssl.com/forums/topic839-solved-err-313-revcd-alert-fatal-error.html
   # 'CFLAGS="${CFLAGS} -DWOLFSSL_STATIC_RSA"'
-  - 'C_EXTRA_FLAGS="-DWOLFSSL_STATIC_RSA -DWOLFSSL_DEBUG_TLS"'
+  - 'C_EXTRA_FLAGS="-DWOLFSSL_STATIC_RSA -DWOLFSSL_DEBUG_TLS -DWOLFSSL_NO_ASN_STRICT"'
 
 
 NoFiles: true

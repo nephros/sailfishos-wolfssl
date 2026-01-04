@@ -143,7 +143,7 @@ Requires:   %{name}-libs = %{version}-%{release}
     --enable-sni \
     --enable-certext \
     --enable-debug-trace-errcodes \
-    C_EXTRA_FLAGS="-DWOLFSSL_STATIC_RSA -DWOLFSSL_DEBUG_TLS"
+    C_EXTRA_FLAGS="-DWOLFSSL_STATIC_RSA -DWOLFSSL_DEBUG_TLS -DWOLFSSL_NO_ASN_STRICT"
 
 %make_build
 
