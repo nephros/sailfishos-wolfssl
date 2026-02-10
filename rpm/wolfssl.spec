@@ -19,7 +19,6 @@ License:    GPLv2
 URL:        https://www.wolfssl.com
 Source0:    %{name}-%{version}.tar.xz
 Source100:  wolfssl.yaml
-Source101:  wolfssl-rpmlintrc
 Patch0:     PR-9685.diff
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)

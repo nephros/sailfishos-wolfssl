@@ -174,9 +174,3 @@ SubPackages:
         - '%{pkgconfigdir}/*pc'
         - '%{_bindir}/%{name}-config'
 
-
-RpmLintIgnore:
-  - 'description-line-too-long'
-  - 'summary-too-long'
-  - 'no-changelogname-tag'
-  - 'invalid-url'
