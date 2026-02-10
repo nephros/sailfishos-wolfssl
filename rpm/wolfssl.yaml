@@ -9,8 +9,8 @@ SCM: https://github.com/wolfSSL/wolfssl
 Sources:
     - '%{name}-%{version}.tar.xz'
     # '%{name}-%{version}.zip'
-#Patches:
-#  - 'baz'
+Patches:
+  - 'PR-9685.diff'
 Description: |
     The wolfSSL embedded SSL library (formerly CyaSSL) is a lightweight SSL/TLS
     library written in ANSI C and targeted for embedded, RTOS, and

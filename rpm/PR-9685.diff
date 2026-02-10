@@ -1,0 +1,42 @@
+diff --git a/src/internal.c b/src/internal.c
+index 3648e9fb30..fa6d52b23b 100644
+--- a/src/internal.c
++++ b/src/internal.c
+@@ -2253,6 +2253,16 @@ int InitSSL_Side(WOLFSSL* ssl, word16 side)
+     }
+ #endif /* WOLFSSL_DTLS && !NO_WOLFSSL_SERVER */
+ 
++    /* Forcefully reinitialize suites here as the side may have changed,
++     * unless the user has explicitly set cipher suites.
++     * Two separate checks to ensure suites are always allocated, to avoid
++     * failing suites == NULL check in InitSSL_Suites. */
++    if (ssl->suites && !ssl->suites->setSuites) {
++        FreeSuites(ssl);
++    }
++    if (!ssl->suites) {
++        AllocateSuites(ssl);
++    }
+     return InitSSL_Suites(ssl);
+ }
+ #endif /* OPENSSL_EXTRA || WOLFSSL_EITHER_SIDE ||
+diff --git a/src/ssl.c b/src/ssl.c
+index d3961330e6..db2adc9c29 100644
+--- a/src/ssl.c
++++ b/src/ssl.c
+@@ -17128,7 +17128,15 @@ long wolfSSL_set_options(WOLFSSL* ssl, long op)
+         if (AllocateSuites(ssl) != 0)
+             return 0;
+         if (!ssl->suites->setSuites) {
+-            InitSuites(ssl->suites, ssl->version, keySz, haveRSA,
++            /* Client side won't set DH params, so it needs haveDH set to TRUE. */
++            if (ssl->options.side == WOLFSSL_CLIENT_END)
++                InitSuites(ssl->suites, ssl->version, keySz, haveRSA,
++                       havePSK, TRUE, ssl->options.haveECDSAsig,
++                       ssl->options.haveECC, TRUE, ssl->options.haveStaticECC,
++                       ssl->options.useAnon,
++                       TRUE, TRUE, TRUE, TRUE, ssl->options.side);
++            else
++                InitSuites(ssl->suites, ssl->version, keySz, haveRSA,
+                        havePSK, ssl->options.haveDH, ssl->options.haveECDSAsig,
+                        ssl->options.haveECC, TRUE, ssl->options.haveStaticECC,
+                        ssl->options.useAnon,
