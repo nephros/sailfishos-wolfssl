@@ -20,6 +20,7 @@ URL:        https://www.wolfssl.com
 Source0:    %{name}-%{version}.tar.xz
 Source100:  wolfssl.yaml
 Source101:  wolfssl-rpmlintrc
+Patch0:     PR-9685.diff
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  autoconf
@@ -81,6 +82,8 @@ Requires:   %{name}-libs = %{version}-%{release}
 %prep
 %setup -q -n %{name}-%{version}/wolfssl
 
+# PR-9685.diff
+%patch0 -p1
 # >> setup
 # << setup
 
