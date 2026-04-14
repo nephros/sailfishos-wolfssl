@@ -162,6 +162,7 @@ rm -rf %{buildroot}%{_docdir}
 %files devel
 %license COPYING
 %{_libdir}/%{lname}.so
+%{_libdir}/cmake/%{name}/*.cmake
 %{_includedir}/%{name}/
 %{pkgconfigdir}/*pc
 %{_bindir}/%{name}-config
