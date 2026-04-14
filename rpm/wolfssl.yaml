@@ -1,6 +1,6 @@
 Name: wolfssl
 Summary: A small, fast, portable implementation of TLS/SSL for embedded devices
-Version: 5.8.4
+Version: 5.9.1
 Release: 0
 Group: Development/Libraries
 License: GPLv2
@@ -9,8 +9,8 @@ SCM: https://github.com/wolfSSL/wolfssl
 Sources:
     - '%{name}-%{version}.tar.xz'
     # '%{name}-%{version}.zip'
-Patches:
-  - 'PR-9685.diff'
+#Patches:
+#  - 'PR-9685.diff'
 Description: |
     The wolfSSL embedded SSL library (formerly CyaSSL) is a lightweight SSL/TLS
     library written in ANSI C and targeted for embedded, RTOS, and

@@ -12,14 +12,13 @@ Name:       wolfssl
 %define lname lib%{name}
 
 Summary:    A small, fast, portable implementation of TLS/SSL for embedded devices
-Version:    5.8.4
+Version:    5.9.1
 Release:    0
 Group:      Development/Libraries
 License:    GPLv2
 URL:        https://www.wolfssl.com
 Source0:    %{name}-%{version}.tar.xz
 Source100:  wolfssl.yaml
-Patch0:     PR-9685.diff
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  autoconf
@@ -81,8 +80,6 @@ Requires:   %{name}-libs = %{version}-%{release}
 %prep
 %setup -q -n %{name}-%{version}/wolfssl
 
-# PR-9685.diff
-%patch0 -p1
 # >> setup
 # << setup
 
