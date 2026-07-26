@@ -8,7 +8,7 @@ Name:       wolfssl
 # >> macros
 # << macros
 %define pkgconfigdir %{_libdir}/pkgconfig
-%define sover 44
+%define sover 45
 %define lname lib%{name}
 
 Summary:    A small, fast, portable implementation of TLS/SSL for embedded devices
