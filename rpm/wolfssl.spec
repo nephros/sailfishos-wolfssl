@@ -126,13 +126,12 @@ Requires:   %{name}-libs = %{version}-%{release}
     --enable-altcertchains \
     --enable-secure-renegotiation \
     --enable-secure-renegotiation-info \
-    --enable-fallback-scsv \
     --enable-ip-alt-name \
     --enable-lighty \
     --with-eccminsz=0 \
     --enable-sha224 \
     --enable-keygen \
-    --enable-certgen
+    --enable-certgen || ./configure --help
 
 %make_build
 
