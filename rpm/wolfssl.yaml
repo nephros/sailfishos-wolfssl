@@ -42,7 +42,7 @@ Description: |
 SetupOptions: -q -n %{name}-%{version}/wolfssl
 Macros:
   - 'pkgconfigdir;%{_libdir}/pkgconfig'
-  - 'sover;45'
+  - 'sover;46'
   - 'lname;lib%{name}'
 #Macros2:
 PkgBR:
