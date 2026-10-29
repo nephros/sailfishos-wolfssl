@@ -1,6 +1,6 @@
 Name: wolfssl
 Summary: A small, fast, portable implementation of TLS/SSL for embedded devices
-Version: 5.9.2
+Version: 5.9.4
 Release: 0
 Group: Development/Libraries
 License: GPLv2
@@ -42,7 +42,7 @@ Description: |
 SetupOptions: -q -n %{name}-%{version}/wolfssl
 Macros:
   - 'pkgconfigdir;%{_libdir}/pkgconfig'
-  - 'sover;45'
+  - 'sover;46'
   - 'lname;lib%{name}'
 #Macros2:
 PkgBR:
@@ -137,7 +137,7 @@ ConfigOptions:
   # '--enable-renegotiation-indication' # either this or --enable-secure-renegotiation
   - '--enable-secure-renegotiation' # can't have this and --enable-renegotiation-indication
   - '--enable-secure-renegotiation-info'
-  - '--enable-fallback-scsv'
+  # '--enable-fallback-scsv'
   - '--enable-ip-alt-name'
   - '--enable-lighty' # for ALTNAMES
   # Privoxy with ecc uses these:
@@ -160,7 +160,6 @@ ConfigOptions:
   # https://www.wolfssl.com/forums/topic839-solved-err-313-revcd-alert-fatal-error.html
   # 'CFLAGS="${CFLAGS} -DWOLFSSL_STATIC_RSA"'
   - 'C_EXTRA_FLAGS="-DWOLFSSL_STATIC_RSA -DWOLFSSL_DEBUG_TLS -DWOLFSSL_NO_ASN_STRICT"'
-
 
 NoFiles: true
 

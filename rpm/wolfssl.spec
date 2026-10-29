@@ -8,13 +8,12 @@ Name:       wolfssl
 # >> macros
 # << macros
 %define pkgconfigdir %{_libdir}/pkgconfig
-%define sover 45
+%define sover 46
 %define lname lib%{name}
 
 Summary:    A small, fast, portable implementation of TLS/SSL for embedded devices
-Version:    5.9.2
+Version:    5.9.4
 Release:    0
-Group:      Development/Libraries
 License:    GPLv2
 URL:        https://www.wolfssl.com
 Source0:    %{name}-%{version}.tar.xz
@@ -128,7 +127,6 @@ Requires:   %{name}-libs = %{version}-%{release}
     --enable-altcertchains \
     --enable-secure-renegotiation \
     --enable-secure-renegotiation-info \
-    --enable-fallback-scsv \
     --enable-ip-alt-name \
     --enable-lighty \
     --with-eccminsz=0 \
@@ -142,7 +140,7 @@ Requires:   %{name}-libs = %{version}-%{release}
     --enable-sni \
     --enable-certext \
     --enable-debug-trace-errcodes \
-    C_EXTRA_FLAGS="-DWOLFSSL_STATIC_RSA -DWOLFSSL_DEBUG_TLS -DWOLFSSL_NO_ASN_STRICT -DWOLFSSL_TLS13_MIDDLEBOX_COMPAT"
+    C_EXTRA_FLAGS="-DWOLFSSL_STATIC_RSA -DWOLFSSL_DEBUG_TLS -DWOLFSSL_NO_ASN_STRICT"
 
 %make_build
 
